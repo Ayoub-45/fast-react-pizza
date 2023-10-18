@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header className="border-b-8 border-stone-200 bg-yellow-400 px-4 py-3 uppercase  sm:px-6 flex items-center justify-between">
       <Link to="/" className="tracking-widest">
-        Fast React Pizza Co.Li
+        Fast React Pizza Co.
       </Link>
       <SearchOrder />
       <Username />
