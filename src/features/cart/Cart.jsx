@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+ import { Link } from 'react-router-dom';
 import LinkButton from '../../ui/LinkButton';
 import Button from '../../ui/Button';
+import {userSelector} from "react-router-dom"
 const fakeCart = [
   {
     pizzaId: 12,
@@ -24,14 +25,14 @@ const fakeCart = [
     totalPrice: 15,
   },
 ];
-
 function Cart() {
   const cart = fakeCart;
+  const username=userSelector(state=>state.user.username);
 
   return (
     <div>
       <LinkButton to="/menu" >&larr; Back to menu</LinkButton>
-      <h2>Your cart, %NAME%</h2>
+      <h2>Your cart, {username}</h2>
 
       <div>
         <Button to="/order/new">Order pizzas</Button>

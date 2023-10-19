@@ -1,4 +1,4 @@
-
+import { userSelector } from "react-redux/es/hooks/useSelector";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 import Button from "../../ui/Button";
@@ -7,7 +7,6 @@ const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
     str,
   );
-
 const fakeCart = [
   {
     pizzaId: 12,
@@ -38,6 +37,7 @@ function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formErrors = useActionData();
+  const username=userSelector(state=>state.user.username);
   return (
     <div className="px-4 py-4">
       <h2 className="text-xl font-semibold mb-8">Ready to order? Let's go!</h2>
@@ -47,7 +47,7 @@ function CreateOrder() {
           <label className="sm:basis-40">First Name</label>
  
           <div className="grow">
-          <input type="text" className="focus-outline-none w-full rounded-full border border-stone-200 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:ring focus:ring-yellow-400 md:px-6 md:py-3" name="customer" required />
+          <input type="text" className="focus-outline-none w-full rounded-full border border-stone-200 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:ring focus:ring-yellow-400 md:px-6 md:py-3" name="customer" required defaultValue={username} />
         
         </div>
         </div>
