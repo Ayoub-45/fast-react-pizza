@@ -1,4 +1,4 @@
-import { userSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 import Button from "../../ui/Button";
@@ -37,7 +37,7 @@ function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formErrors = useActionData();
-  const username=userSelector(state=>state.user.username);
+  const username=useSelector(state=>state.user.username);
   return (
     <div className="px-4 py-4">
       <h2 className="text-xl font-semibold mb-8">Ready to order? Let's go!</h2>

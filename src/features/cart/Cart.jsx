@@ -1,7 +1,6 @@
- import { Link } from 'react-router-dom';
 import LinkButton from '../../ui/LinkButton';
 import Button from '../../ui/Button';
-import {userSelector} from "react-router-dom"
+import { useSelector } from "react-redux/es/hooks/useSelector";
 const fakeCart = [
   {
     pizzaId: 12,
@@ -27,7 +26,7 @@ const fakeCart = [
 ];
 function Cart() {
   const cart = fakeCart;
-  const username=userSelector(state=>state.user.username);
+  const username=useSelector(state=>state.user.username);
 
   return (
     <div>
