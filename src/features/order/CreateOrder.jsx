@@ -8,6 +8,8 @@ import { getCart, getTotalCartPrice } from "../cart/cartSlice";
 import store from "../../store"
 import { clearCart } from "../cart/cartSlice";
 import { formatCurrency } from "../../utils/helpers";
+import { useDispatch } from "react-redux";
+import { fetchAddress } from "../user/userSlice";
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
@@ -24,11 +26,12 @@ function CreateOrder() {
   const totalCartPrice=useSelector(getTotalCartPrice)
   const priorityPrice=withPriority?totalCartPrice*0.2:0;
   const totalPrice=totalCartPrice+priorityPrice
+  const dispatch=useDispatch(fetchAddress)
   if(!cart.length) return <EmptyCart/>
   return (
     <div className="px-4 py-4">
       <h2 className="text-xl font-semibold mb-8">Ready to order? Let's go!</h2>
-
+      <button onClick={()=>dispatch(fetchAddress())}>Get position</button>
       <Form method="POST">
         <div className="mb-5 flex gap-2 flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">First Name</label>
